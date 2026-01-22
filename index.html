@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organograma Segurança Eletrônica</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+</head>
+<body>
+
+    <div id="splash-screen">
+        <img src="https://github.com/user-attachments/assets/fb03c30a-d16a-4f23-980d-ca650748c93d" alt="Carregando...">
+    </div>
+
+    <header class="main-header">
+        <div class="header-brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="3" width="6" height="6"></rect>
+                <path d="M5 15h14"></path>
+                <path d="M12 9v6"></path>
+                <path d="M12 15v3"></path>
+                <rect x="2" y="18" width="6" height="6"></rect>
+                <rect x="16" y="18" width="6" height="6"></rect>
+            </svg>
+            <h1>Organograma Segurança Eletrônica</h1>
+        </div>
+        
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button id="btn-admin-access" class="btn-admin" title="Acesso Administrativo" style="background:none; border:none; cursor:pointer; color:#64748b;">
+                <span class="material-icons-round">lock</span>
+            </button>
+
+            <a href="https://www.brasfort.com.br" target="_blank" class="header-logo-right" title="Acessar Link">
+                <img src="https://github.com/user-attachments/assets/c2b36556-9dd9-4d64-9107-f5c742b1bb84" alt="Logo">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div id="org-container" class="org-chart"></div>
+
+        <div class="section-divider">
+            <span>Apoio Operacional & Aprendizado</span>
+        </div>
+
+        <div id="support-container" class="support-grid"></div>
+    </main>
+
+    <div id="profile-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <div id="modal-avatar" class="modal-avatar"></div>
+                <h2 id="modal-name"></h2>
+                <div id="modal-role" class="modal-role-tag"></div>
+            </div>
+            <div class="modal-divider"></div>
+            <div id="modal-body" class="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
