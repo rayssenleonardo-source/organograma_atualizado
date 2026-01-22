@@ -812,3 +812,147 @@ body {
     height: 40px;
   }
 }
+/* ===================== HEADER CENTRALIZADO / SEM DESLOCAMENTO ===================== */
+
+.main-header{
+  position: sticky;   /* opcional: mantém no topo ao rolar */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Garante que os dois lados (brand e logo) fiquem equilibrados */
+.header-brand{
+  flex: 1 1 auto;
+  justify-content: flex-start;
+}
+
+.header-logo-right{
+  flex: 0 0 auto;
+}
+
+/* Se você quer o título “no meio” no mobile, use esse modo: */
+@media (max-width: 768px){
+  .main-header{
+    justify-content: center;  /* centraliza o conjunto */
+    gap: 12px;
+  }
+
+  .header-brand{
+    flex: 0 1 auto;           /* não força ocupar tudo */
+  }
+
+  .header-logo-right{
+    flex: 0 0 auto;
+  }
+}
+/* ===================== FIX HEADER MOBILE (NÃO ENCOLHER / NÃO FICAR À ESQUERDA) ===================== */
+html, body {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Se em algum lugar você tiver align-items:center no body, isso impede o stretch.
+   Esse bloco garante que o header sempre ocupe a largura toda. */
+.main-header {
+  align-self: stretch;      /* CRÍTICO para layout com body flex */
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  position: sticky;         /* opcional (mantém no topo) */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Mantém o conteúdo interno organizado, sem “puxar” tudo pra esquerda no mobile */
+@media (max-width: 768px) {
+  .main-header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .header-brand h1 {
+    font-size: 14px;        /* evita estourar */
+    line-height: 1.1;
+  }
+}
+body { align-items: stretch; }
+/* ===================== FIX DEFINITIVO DO HEADER NO MOBILE ===================== */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* evita “puxar” o layout por causa de 100vw */
+}
+
+.main-header {
+  position: fixed;       /* garante que ele é da largura da tela */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;          /* MAIS confiável que 100% no mobile */
+  max-width: 100vw;
+  box-sizing: border-box;
+  z-index: 2000;
+}
+
+/* Empurra o conteúdo para não ficar “por baixo” do header */
+main {
+  padding-top: 60px;     /* mesma altura do header */
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Ajustes finos no mobile */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 0 14px;
+  }
+  .header-brand h1 {
+    font-size: 14px;
+    line-height: 1.1;
+  }
+}
+/* Mantém a página sem “vazar” para os lados, mas não mata o scroll do organograma */
+html, body{
+  width: 100%;
+  max-width: 100%;
+  overflow-x: visible;   /* <- NÃO usar hidden aqui */
+}
+
+/* Header fixo (como está funcionando agora) */
+.main-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  max-width: 100vw;
+  box-sizing: border-box;
+  z-index: 2000;
+}
+
+/* Empurra o conteúdo para baixo do header */
+main{
+  padding-top: 60px;
+}
+
+/* SCROLL DO ORGANOGRAMA: horizontal e vertical dentro do container */
+#org-container{
+  height: calc(100vh - 60px); /* ocupa a tela sem “passar” do header */
+  overflow-x: auto;           /* <- volta o scroll lateral */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  justify-content: flex-start; /* melhora no mobile (não “prende” no centro) */
+}
+
+/* Evita o organograma “amassar” a largura e perder área de arraste */
+.org-chart{
+  width: max-content;
+  min-width: 100%;
+}
