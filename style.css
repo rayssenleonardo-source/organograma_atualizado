@@ -35,7 +35,7 @@
   align-items: center;
   z-index: 9999;
   transition: opacity 0.8s ease, visibility 0.8s ease;
-  padding: 0; /* Garante que não tenha espaçamento interno */
+  padding: 0;
 }
 
 #splash-screen.hidden {
@@ -46,22 +46,22 @@
 
 #splash-screen img {
   width: 100%;
-  height: 100%;       /* Força a imagem a ocupar 100% da altura da tela */
-  object-fit: cover;  /* A MÁGICA: Preenche tudo, cortando excessos sem distorcer */
-  object-position: center; /* Mantém o centro da imagem visível */
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   animation: pulseLogo 2s infinite ease-in-out;
 }
 
 @keyframes pulseLogo {
   0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.02); opacity: 0.95; } /* Reduzi o pulso para não cortar demais */
+  50% { transform: scale(1.02); opacity: 0.95; }
   100% { transform: scale(1); opacity: 1; }
 }
+
 /* ===================== BODY / LAYOUT ===================== */
 body {
-  /* Alterado para Barlow */
   font-family: "Barlow", sans-serif;
-  font-weight: 400; /* Regular por padrão */
+  font-weight: 400;
   background: var(--bg);
   margin: 0;
   padding: 0;
@@ -90,11 +90,11 @@ body {
 }
 
 .header-brand h1 {
-  font-size: 20px; /* Aumentei levemente para a Barlow */
-  font-weight: 700; /* Barlow Bold */
+  font-size: 20px;
+  font-weight: 700;
   color: #24292f;
   margin: 0;
-  text-transform: uppercase; /* Fica ótimo com Barlow */
+  text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
@@ -123,10 +123,16 @@ body {
 }
 
 /* ===================== ÁREA PRINCIPAL DO ORGANOGRAMA ===================== */
+/* AJUSTE MOBILE: scroll horizontal correto e pan */
 #org-container {
   flex: 1;
   padding: 32px 20px 48px;
-  overflow: auto;
+
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -134,10 +140,20 @@ body {
 }
 
 /* ===================== ESTRUTURA DO ORGANOGRAMA ===================== */
+/* AJUSTE MOBILE: org-chart não pode “encolher”; precisa medir a largura real */
 .org-chart {
-  display: flex;
+  display: inline-flex;
+  width: max-content;
+  min-width: 100%;
   justify-content: center;
   align-items: flex-start;
+}
+
+/* Impede “shrink” do conteúdo (essencial para alcançar a direita no celular) */
+.node,
+.group-container,
+.children {
+  flex-shrink: 0;
 }
 
 .node {
@@ -175,15 +191,18 @@ body {
   align-items: center;
   cursor: pointer;
 
+  /* evita “aura”/borda estranha em animação */
+  overflow: hidden;
+
   transition:
     transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.25s ease,
     border-color 0.25s ease;
 }
+
 .card:hover {
   transform: translateY(-6px);
-  box-shadow:
-    0 12px 24px rgba(15, 23, 42, 0.18);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
 }
 
 .avatar {
@@ -193,6 +212,7 @@ body {
 .card:hover .avatar {
   transform: scale(1.05);
 }
+
 .card::before {
   content: "";
   position: absolute;
@@ -201,30 +221,22 @@ body {
   right: 14%;
   height: 3px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.75); /* mais neutro */
+  background: rgba(255,255,255,0.75);
   opacity: 0;
   transform: scaleX(0.7);
   transition: all 0.25s ease;
 }
-
 
 .card:hover::before {
   opacity: 1;
   transform: scaleX(1);
 }
 
-
 .card:hover h3 {
   text-shadow: 0 1px 6px rgba(0,0,0,0.15);
 }
-.card {
-  overflow: hidden; /* 🔥 ISSO resolve 90% do problema */
-}
-
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-3);
   border-color: #d0d7de;
 }
 
@@ -241,7 +253,7 @@ body {
   display: grid;
   place-items: center;
   color: #fff;
-  font-weight: 700; /* Barlow Bold */
+  font-weight: 700;
   font-size: 16px;
   margin-bottom: 8px;
   background-color: rgba(148,163,184,0.6);
@@ -258,7 +270,7 @@ body {
 .card h3 {
   margin: 0 0 4px;
   font-size: 14px;
-  font-weight: 700; /* Barlow Bold */
+  font-weight: 700;
   color: var(--text);
   line-height: 1.2;
 }
@@ -274,17 +286,17 @@ body {
   border-radius: 999px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-weight: 700; /* Barlow Bold para leitura melhor em tamanho pequeno */
+  font-weight: 700;
 }
 
 /* ===================== CORES POR NÍVEL ===================== */
 .level-1 .card {
-background: linear-gradient(
-  135deg,
-  #283868 0%,
-  #324a86 70%,
-  #3a5798 100%
-);
+  background: linear-gradient(
+    135deg,
+    #283868 0%,
+    #324a86 70%,
+    #3a5798 100%
+  );
   color: #ffffff;
   border-color: transparent;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
@@ -306,10 +318,7 @@ background: linear-gradient(
   border: 2px solid rgba(255,255,255,0.6);
 }
 
-
 /* ===================== CONECTORES DO ORGANOGRAMA (VERSÃO DEFINITIVA) ===================== */
-
-/* 1. Limpa estilos antigos para garantir que nada interfira */
 .node::before, .node::after, .children::before, .children::after {
   content: none;
   display: none;
@@ -318,7 +327,7 @@ background: linear-gradient(
 .children {
   display: flex !important;
   justify-content: center;
-  padding-top: 50px;   /* 20 + 30 = 50 (cobre o “vão” que era do margin-bottom) */
+  padding-top: 50px;
   position: relative;
   gap: 30px;
 }
@@ -330,34 +339,28 @@ background: linear-gradient(
   top: 0;
   left: 50%;
   width: 2px;
-  height: 50px;        /* igual ao padding-top */
+  height: 50px;
   background-color: #cbd5e1;
   transform: translateX(-50%);
   z-index: 1;
 }
 
-
-/* 3. Configuração de CADA NÓ (Filho) */
 .node {
   position: relative;
-  padding-top: 20px; /* Espaço para a linha chegar no cartão */
+  padding-top: 20px;
 }
 
-/* --- LINHAS INDIVIDUAIS --- */
-
-/* Linha HORIZONTAL (Barra que conecta os irmãos) */
 .node::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; /* Por padrão, ocupa toda a largura do nó */
+  width: 100%;
   height: 2px;
   background-color: #cbd5e1;
   display: block;
 }
 
-/* Linha VERTICAL (Do conector para o Card) */
 .node::after {
   content: '';
   position: absolute;
@@ -370,29 +373,21 @@ background: linear-gradient(
   display: block;
 }
 
-/* --- CORREÇÕES PARA PONTAS (PRIMEIRO E ÚLTIMO) --- */
-
-/* 1. Primeiro Filho: A linha horizontal deve começar do meio e ir para a direita */
-/* (Removemos a metade esquerda da linha) */
 .node:first-child::before {
   left: 50%;
   width: 70%;
 }
 
-/* 2. Último Filho: A linha horizontal deve começar na esquerda e parar no meio */
-/* (Removemos a metade direita da linha) */
 .node:last-child::before {
   right: 50%;
   width: 70%;
-  left: auto; /* Importante para anular o left:0 padrão */
+  left: auto;
 }
 
-/* 3. Filho Único: Se só tem um, não precisa de linha horizontal, apenas a vertical */
 .node:only-child::before {
   display: none;
 }
 
-/* (Opcional) Arredondar os cantos das linhas nas pontas para ficar mais bonito */
 .node:first-child::before { border-top-left-radius: 4px; }
 .node:last-child::before { border-top-right-radius: 4px; }
 
@@ -400,8 +395,8 @@ background: linear-gradient(
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.65); /* Fundo um pouco mais escuro e azulado */
-  backdrop-filter: blur(6px); /* Desfoque mais forte no fundo */
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -419,44 +414,38 @@ background: linear-gradient(
 
 .modal-content {
   background: #ffffff;
-  width: 420px; /* Um pouco mais largo */
+  width: 420px;
   max-width: 95vw;
-  max-height: 85vh; /* Altura máxima para garantir que caiba na tela */
-  overflow-y: auto; /* Permite rolar se o conteúdo for grande */
-  padding: 0; /* Padding controlado internamente */
-  border-radius: 20px; /* Bordas bem arredondadas */
-  box-shadow: 
-    0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 0;
+  border-radius: 20px;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04),
-    0 0 0 1px rgba(0,0,0,0.02); /* Borda sutil */
+    0 0 0 1px rgba(0,0,0,0.02);
   text-align: center;
   position: relative;
   transform: scale(0.95) translateY(10px);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efeito elástico sutil ao abrir */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Personalização da Barra de Rolagem (Scrollbar) */
-.modal-content::-webkit-scrollbar {
-  width: 6px;
-}
+.modal-content::-webkit-scrollbar { width: 6px; }
 .modal-content::-webkit-scrollbar-track {
   background: #f1f1f1;
-  margin: 10px 0; /* Margem nas pontas */
+  margin: 10px 0;
   border-radius: 10px;
 }
 .modal-content::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 10px;
 }
-.modal-content::-webkit-scrollbar-thumb:hover {
-  background: #bbb;
-}
+.modal-content::-webkit-scrollbar-thumb:hover { background: #bbb; }
 
 .modal-overlay.active .modal-content {
   transform: scale(1) translateY(0);
 }
 
-/* Botão Fechar */
 .close-btn {
   position: absolute;
   top: 15px;
@@ -477,18 +466,16 @@ background: linear-gradient(
 
 .close-btn:hover {
   background: #e2e8f0;
-  color: #ef4444; /* Vermelho ao passar o mouse */
+  color: #ef4444;
   transform: rotate(90deg);
 }
 
-/* Cabeçalho do Modal (Fundo sutil) */
 .modal-header {
   background: linear-gradient(to bottom, var(--bg-soft), #ffffff);
   padding: 30px 20px 20px;
   border-bottom: 1px solid #f1f5f9;
 }
 
-/* Avatar Grande */
 .modal-avatar {
   width: 110px;
   height: 110px;
@@ -526,33 +513,29 @@ background: linear-gradient(
   color: var(--accent);
   border-radius: 20px;
   font-size: 13px;
-  font-weight: 700; /* Barlow Bold */
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-/* Corpo do Modal */
 .modal-body {
-  padding: 20px 30px 30px; /* Mais espaço nas laterais */
+  padding: 20px 30px 30px;
   text-align: left;
 }
 
-/* Linhas de Informação */
 .info-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #f1f5f9; /* Linha sólida e suave */
+  border-bottom: 1px solid #f1f5f9;
   font-size: 15px;
 }
 
-.info-row:last-child {
-  border-bottom: none;
-}
+.info-row:last-child { border-bottom: none; }
 
 .info-label {
-  color: #64748b; /* Cinza médio */
+  color: #64748b;
   font-weight: 500;
   font-size: 14px;
   display: flex;
@@ -561,12 +544,11 @@ background: linear-gradient(
 }
 
 .info-value {
-  color: #0f172a; /* Quase preto */
+  color: #0f172a;
   font-weight: 600;
   text-align: right;
 }
 
-/* Descrição */
 .info-row-descricao {
   flex-direction: column;
   align-items: flex-start;
@@ -598,7 +580,6 @@ background: linear-gradient(
   font-size: 14px;
 }
 
-/* Botão e Área Detalhada */
 .descricao-detalhada-wrapper {
   margin-top: 20px;
   display: flex;
@@ -640,7 +621,7 @@ background: linear-gradient(
   margin-top: 12px;
   padding: 16px;
   border-radius: 12px;
-  background: #eff6ff; /* Fundo levemente azulado para destacar */
+  background: #eff6ff;
   border: 1px solid #dbeafe;
   text-align: left;
   animation: slideDown 0.3s ease-out;
@@ -659,11 +640,8 @@ background: linear-gradient(
   font-weight: 400;
 }
 
-.hidden {
-  display: none !important;
-}
+.hidden { display: none !important; }
 
-/* Responsividade do Modal */
 @media (max-width: 480px) {
   .modal-content {
     width: 100%;
@@ -679,15 +657,22 @@ background: linear-gradient(
 
 /* ===================== RESPONSIVIDADE ===================== */
 @media (max-width: 768px) {
+  #org-container {
+    justify-content: flex-start; /* no mobile, evita “centralizar demais” */
+  }
+
   .org-chart {
     justify-content: flex-start;
   }
+
   .group-container {
     gap: 10px;
   }
+
   .card {
     width: 125px;
   }
+
   .avatar {
     width: 70px;
     height: 70px;
@@ -706,64 +691,53 @@ background: linear-gradient(
 }
 
 /* ===================== ÁREA INFERIOR (APOIO) ===================== */
-
-/* Divisória elegante */
 .section-divider {
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid #e1e4e8;
-    line-height: 0.1em;
-    margin: 40px 0 30px;
-    color: #94a3b8;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #e1e4e8;
+  line-height: 0.1em;
+  margin: 40px 0 30px;
+  color: #94a3b8;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .section-divider span {
-    background: var(--bg);
-    padding: 0 15px;
+  background: var(--bg);
+  padding: 0 15px;
 }
 
-/* Container dos grupos de apoio */
 .support-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding-bottom: 40px;
 }
 
-/* Ajuste para que os grupos fiquem bonitos sem as linhas da árvore */
 .support-group {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
 
-/* Responsividade para o rodapé */
 @media (max-width: 768px) {
-    .support-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .support-group {
-        flex-wrap: wrap;
-    }
+  .support-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .support-group {
+    flex-wrap: wrap;
+  }
 }
+
+/* ===================== OP. MONITORAMENTO (DIA/NOITE) ===================== */
 .monitoramento-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-}
-
-.monitoramento-col h4 {
-  text-align: center;
-  font-size: 13px;
-  font-weight: 600;
-  color: #475569;
-  margin-bottom: 8px;
 }
 
 .monitoramento-col {
@@ -771,8 +745,9 @@ background: linear-gradient(
   flex-direction: column;
   gap: 10px;
 }
+
 /* Títulos (Dia/Noite) como rótulo, não texto solto */
-.monitoramento-col h4{
+.monitoramento-col h4 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -789,12 +764,51 @@ background: linear-gradient(
   font-weight: 700;
   color: #334155;
 
-  margin: 0 auto 10px;  /* centraliza e dá respiro */
+  margin: 0 auto 10px;
   width: fit-content;
-}
 
-/* Mantém o título acima das linhas */
-.monitoramento-col h4{
   position: relative;
   z-index: 4;
+}
+/* ===================== FIX HEADER MOBILE (barra superior encolhida) ===================== */
+
+/* garante que o header sempre ocupa a viewport inteira */
+.main-header{
+  width: 100%;
+  max-width: 100vw;
+  flex: 0 0 auto;
+}
+
+/* evita que o conteúdo force o header a ficar menor */
+.header-brand{
+  min-width: 0;
+}
+
+/* permite o texto reduzir/encolher sem quebrar layout */
+.header-brand h1{
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* evita o logo "empurrar" e comprimir a barra */
+.header-logo-right{
+  flex: 0 0 auto;
+}
+
+/* ajustes específicos para telas menores */
+@media (max-width: 768px){
+  .main-header{
+    padding: 0 12px;     /* menor padding no mobile */
+  }
+
+  .header-brand h1{
+    font-size: 16px;     /* reduz o título */
+  }
+
+  .header-logo-right{
+    width: 86px;
+    height: 40px;
+  }
 }
