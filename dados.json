@@ -40,42 +40,75 @@
             ],
             "filhos": []
           },
+
           {
-            "cargo": "Técnico de Seg. Eletrônica",
-            "nivel": 3,
+            "cargo": "Técnico de Suporte",
+            "nivel": 2,
             "nomes": [
               {
-                "nome": "Silvano Rodrigues",
-                "matricula": "27579",
-                "foto": "https://github.com/user-attachments/assets/e3924039-fd1d-4056-a6f7-9e9b8d52a179",
-                "email": "silvano.souza@brasfort.com.br",
-                "telefone": "(61) 99666-2715",
-                "nascimento": "06/04/2003",
-                "admissao": "02/2021"
-              },
-              {
-                "nome": "Thiago Alves",
-                "matricula": "53211",
-                "foto": "https://github.com/user-attachments/assets/3cfeee29-c8b6-470f-8ae0-2088fcd0febb",
-                "email": "thiago.alves@brasfort.com.br",
-                "telefone": "(61) 99903-7261",
-                "nascimento": "29/07/1985",
-                "admissao": "10/2025"
-              },
-              {
-                "nome": "Cirlei Silva",
-                "matricula": "53529",
-                "foto": "https://github.com/user-attachments/assets/77723fb4-2ee2-4638-adcf-1a120abcd8ac",
-                "email": "cirlei.silva@brasfort.com.br",
-                "telefone": "(61) 992847852",
-                "nascimento": "08/01/1991",
-                "admissao": "01/2026"
+                "nome": "Rayssen Leonardo",
+                "matricula": "29974",
+                "foto": "https://github.com/user-attachments/assets/16eef1a3-8f46-4fc8-8b9c-055d4f054fb5",
+                "email": "rayssen.braga@brasfort.com.br",
+                "telefone": "(61) 99581-9374",
+                "nascimento": "06/05/2003",
+                "admissao": "03/2024",
+                "descricao": "<br>Responsável por atendimentos técnicos remotos e presenciais, identificando e corrigindo falhas em sistemas de segurança eletrônica.",
+                "descricaoDetalhada": "<br>1- Atendimentos técnicos remotos e presenciais.<br>2- Manutenções corretivas e preventivas.<br>3- Orientação técnica.<br>4- Relatórios e indicadores."
               }
             ],
             "filhos": [
               {
+                "cargo": "Técnico de Suporte",
+                "nivel": 3,
+                "nomes": [
+                  {
+                    "nome": "vaga em aberto",
+                    "descricao": "<br>Responsável por atendimentos técnicos remotos e presenciais."
+                  },
+                  {
+                    "nome": "Quedma Paula",
+                    "matricula": "30346",
+                    "foto": "https://github.com/user-attachments/assets/da33e098-642f-4783-865b-5563594176fb",
+                    "email": "quedma2015.qf@gmail.com",
+                    "telefone": "(61) 98664-6162",
+                    "nascimento": "13/04/1993",
+                    "admissao": "01/03/2024",
+                    "descricao": "<br>Atendimento técnico remoto e presencial."
+                  }
+                ],
+                "filhos": [
+                  {
+                    "cargo": "Op. Monitoramento",
+                    "nivel": 4,
+                    "layout": "vertical",
+                    "nomes": [
+                      { "nome": "Adriel Rego", "turno": "Dia" },
+                      { "nome": "Luiz Gabriel", "turno": "Dia" },
+                      { "nome": "Renier Müller Cunha", "turno": "Dia" },
+                      { "nome": "David Alves", "turno": "Noite" },
+                      { "nome": "Fabricio Forte", "turno": "Noite" },
+                      { "nome": "Marcos Vinicius Maia", "turno": "Noite" }
+                    ],
+                    "filhos": []
+                  }
+                ]
+              }
+            ]
+          },
+
+          {
+            "cargo": "Técnico de Seg. Eletrônica",
+            "nivel": 2,
+            "nomes": [
+              { "nome": "Silvano Rodrigues" },
+              { "nome": "Thiago Alves" },
+              { "nome": "Cirlei Silva" }
+            ],
+            "filhos": [
+              {
                 "cargo": "Auxiliar Técnico",
-                "nivel": 4,
+                "nivel": 3,
                 "layout": "vertical",
                 "nomes": [
                   { "nome": "Lucas Matos" },
@@ -90,6 +123,7 @@
       }
     ]
   },
+
   "apoio": [
     {
       "cargo": "Jovem Aprendiz",
