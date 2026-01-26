@@ -7,27 +7,37 @@
         "nome": "Glenda Negreiros",
         "email": "glenda@brasfort.com.br",
         "foto": "https://github.com/user-attachments/assets/5ecca86d-dd31-4f36-9cd2-d601f56ebba8",
-        "descricao": "<br> Responsável por gerir estrategicamente toda a operação de segurança eletrônica.",
-        "descricaoDetalhada": "<br> Planejamento, gestão de equipes, contratos e resultados."
+        "descricao": "<br>Responsável por gerir estrategicamente toda a operação de segurança eletrônica.",
+        "descricaoDetalhada": "<br>Planejamento, gestão de equipes, contratos e resultados."
       }
     ],
     "filhos": [
       {
-        "cargo": "Administrativo",
+        "cargo": "Coordenação",
         "nivel": 2,
         "nomes": [
           {
-            "nome": "Quely Ferreira",
-            "matricula": "28091",
-            "foto": "https://github.com/user-attachments/assets/17bfd145-243e-48d5-8073-099a22277204",
-            "email": "quely.ferreira@brasfort.com.br",
-            "telefone": "(61) 98563-1537",
-            "nascimento": "09/05/1972",
-            "admissao": "01/09/2023",
-            "descricao": "<br>Responsável por oferecer suporte administrativo às operações do setor de segurança eletrônica, organizando documentos, acompanhando ordens de serviço, auxiliando na gestão de estoque técnico e prestando atendimento aos clientes e à equipe de campo, com foco em agilidade, organização e conformidade.",
-            "descricaoDetalhada": "<br> 1- Organizar documentos técnicos e administrativos, classificando e arquivando contratos, ordens de serviço, relatórios e projetos, garantindo fácil acesso e rastreabilidade das informações. <br> 2- Preparar propostas comerciais e orçamentos conforme as demandas recebidas, acompanhando o retorno dos clientes. <br> 3- Solicitar materiais e equipamentos para a equipe técnica, emitindo requisições e atualizando o controle administrativo de estoque.<br> 4- Registrar atendimentos e solicitações em sistema ou planilha, acompanhar o status das ordens e atualizar clientes e gestores.<br> 5- Agendar visitas técnicas, alinhando disponibilidade da equipe e organizando a agenda operacional.<br> 6- Atender clientes por telefone, e-mail ou sistema, esclarecendo dúvidas administrativas e direcionando questões técnicas para o setor responsável.<br> 7- Realizar follow-up dos atendimentos técnicos, coletando feedbacks e verificando a satisfação do cliente.<br> 8- Elaborar relatórios administrativos com dados de atendimento, incluindo volume de OS, prazos, desempenho da equipe e SLA.<br> 9- Auxiliar na organização do estoque técnico, registrando entradas e saídas, emitindo etiquetas e documentos necessários.<br> 10- Atualizar planilhas operacionais e apoiar na organização da agenda técnica.<br> 11- Controlar prazos de manutenções periódicas, avisando responsáveis técnicos e clientes para garantir a execução no tempo adequado."
+            "nome": "Luciano Nascimento",
+            "email": "luciano.nascimento@brasfort.com.br"
+            "foto": "https://github.com/user-attachments/assets/98982e04-790a-4fd7-be29-29217af7ca32"
+            "descricao": "<br>Responsável por coordenar as áreas técnicas, administrativas e operacionais."
           }
         ],
+        "filhos": [
+          {
+            "cargo": "Administrativo",
+            "nivel": 3,
+            "nomes": [
+              {
+                "nome": "Quely Ferreira",
+                "matricula": "28091",
+                "foto": "https://github.com/user-attachments/assets/17bfd145-243e-48d5-8073-099a22277204",
+                "email": "quely.ferreira@brasfort.com.br",
+                "telefone": "(61) 98563-1537",
+                "nascimento": "09/05/1972",
+                "admissao": "01/09/2023"
+              }
+            ],
         "filhos": []
       },
       {
@@ -292,3 +302,4 @@
     }
   ]
 }
+
