@@ -137,6 +137,15 @@
                     "admissao": "01/2026",
                     "descricao": "<br>Responsável pelo monitoramento remoto de sistemas de segurança eletrônica, atendendo ocorrências, executando rondas virtuais, checklists e prestando suporte técnico e administrativo. Atua como ponto central na detecção de incidentes e resposta rápida a riscos.",
                     "descricaoDetalhada": "<br> 1- Monitorar câmeras e alarmes em plataformas como SIM Next, Sigma Image e Sigma Cloud. <br> 2- Realizar checklists diários, registrando falhas e comunicando a equipe responsável.<br> 3- Verificar status individual das câmeras e informar o grupo técnico sobre falhas.<br> 4- Responder a disparos de alarme, contatando clientes, fiscais de ronda e órgãos competentes.<br> 5- Criar e alterar senhas, incluindo senhas de coação, nos sistemas internos.<br> 6- Atualizar cadastros e abrir Ordens de Serviço conforme necessidade.<br> 7- Executar arme e desarme das centrais de alarme conforme solicitações oficiais."
+                   },
+                      { "nome": "Michael Douglas Dantas Ramos", "turno": "Noite", "matricula": "53572",
+                    "foto": "",
+                    "email": "mmichael.ramos@brasfort.com.br",
+                    "telefone": "(61) 981013307",
+                    "nascimento": "",
+                    "admissao": "01/2026",
+                    "descricao": "<br>Responsável pelo monitoramento remoto de sistemas de segurança eletrônica, atendendo ocorrências, executando rondas virtuais, checklists e prestando suporte técnico e administrativo. Atua como ponto central na detecção de incidentes e resposta rápida a riscos.",
+                    "descricaoDetalhada": "<br> 1- Monitorar câmeras e alarmes em plataformas como SIM Next, Sigma Image e Sigma Cloud. <br> 2- Realizar checklists diários, registrando falhas e comunicando a equipe responsável.<br> 3- Verificar status individual das câmeras e informar o grupo técnico sobre falhas.<br> 4- Responder a disparos de alarme, contatando clientes, fiscais de ronda e órgãos competentes.<br> 5- Criar e alterar senhas, incluindo senhas de coação, nos sistemas internos.<br> 6- Atualizar cadastros e abrir Ordens de Serviço conforme necessidade.<br> 7- Executar arme e desarme das centrais de alarme conforme solicitações oficiais."
                    }
                     ],
                     "filhos": []
@@ -255,4 +264,5 @@
     }
   ]
 }
+
 
